@@ -7,14 +7,20 @@ const port=process.env.PORT || 3000;
 const connectDB=require("./config/connectdb");
 connectDB(process.env.DB_URL);
 
-//importing user Router
-const userRouter=require("./routes/userRoutes");
-
-//JSON handling
+//json middleware
 app.use(express.json());
 
-//Registering router
-app.use("/api/user",userRouter);
+//importing & registering user Router
+const userRouter=require("./routes/userRoutes");
+app.use("/api/users",userRouter);
 
+//importing & registering notebook Router
+const notebookRouter=require("./routes/notebookRoutes");
+app.use("/api/notebooks",notebookRouter);
 
+//importing & registering note Router
+const noteRouter=require("./routes/noteRoutes");
+app.use("/api/notes",noteRouter);
+
+ 
 app.listen(port,()=>console.log(`listening on port ${port}`));

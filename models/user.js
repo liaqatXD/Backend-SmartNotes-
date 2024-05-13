@@ -2,7 +2,7 @@ const mongoose=require("mongoose");
 
 const userSchema=new mongoose.Schema(
     {
-        name:{
+        username:{
             type:String,
             required:true,
             trim:true
@@ -10,13 +10,18 @@ const userSchema=new mongoose.Schema(
         email:{
             type:String,
             required:true,
-            trim:true
+            trim:true,
+            unique:true
         },
+
         password:{
             type:String,
             required:true,
             trim:true
-        }
+        },
+        noOfTasks: { type: Number, default: 0 },
+        pomodoroTimers: { type: Number, default: 0 },
+        noOfNotes: { type: Number, default: 0 }
     }
 )
 
