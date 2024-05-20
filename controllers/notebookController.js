@@ -1,5 +1,5 @@
 const notebookModal=require("../models/notebook");
-
+const noteModal=require("../models/note");
 module.exports={
     createNotebook:async (req,res)=>{
      {
@@ -22,7 +22,7 @@ module.exports={
 
         try {
             const notebooks=await notebookModal.find({author:id});
-        res.json({notebooks});
+        res.json(notebooks);
         } catch (error) {
             res.status(500).json({"error while fetching notebooks":error.message})
            
@@ -48,7 +48,8 @@ module.exports={
         const id=req.params.id;
         try {
             await notebookModal.deleteOne({_id:id});
-            res.json({"success":"notebook deleted successfully."})
+          const response=  await noteModal.deleteMany({notebook:id});
+            res.json(response);
 
         } catch (error) {
             res.status(500).json({"error while deleting the notebook":error.message});

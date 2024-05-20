@@ -13,13 +13,8 @@ const userSchema=new mongoose.Schema(
             trim:true,
             unique:true
         },
-
-        password:{
-            type:String,
-            required:true,
-            trim:true
-        },
-        noOfTasks: { type: Number, default: 0 },
+        
+        noOfBadges: { type: Number, default: 0 },
         pomodoroTimers: { type: Number, default: 0 },
         noOfNotes: { type: Number, default: 0 }
     }

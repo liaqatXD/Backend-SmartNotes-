@@ -5,12 +5,12 @@ module.exports={
     createNote:async (req,res)=>{
         const {title,content,notebook}=req.body;
        try {
-       await noteModal.create({
+    const note=   await noteModal.create({
             title,
             content,
             notebook
         });
-        res.json({"success":"note created successfully."})
+        res.json(note);
        } catch (error) {
         res.status(500).json({"error while creating note":error.message})
         
@@ -29,6 +29,7 @@ module.exports={
 
     },
     updateNote: async(req,res)=>{
+
         const id=req.params.id;
         try {
             await noteModal.updateOne(

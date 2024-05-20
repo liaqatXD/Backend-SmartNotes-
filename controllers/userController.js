@@ -4,15 +4,14 @@ const userModel=require("../models/user");
 module.exports={
     // Register Function on sign-up
     createUser:async (req,res)=>{
-        console.log(req.body);
         const {username,email,password}=req.body;
         try {
-       await userModel.create({
+     const user=  await userModel.create({
             username,
             email,
             password
         });
-        res.status(200).json({"success":"user created successfully."})
+        res.status(200).json(user)
             
         } catch (error) {
     res.status(500).json({"error":error.message})
