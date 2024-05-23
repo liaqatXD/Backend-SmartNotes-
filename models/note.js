@@ -8,6 +8,7 @@ const noteSchema=new mongoose.Schema(
        },
        content:{
         type:String,
+        default:""
        },
        notebook: { type: mongoose.Schema.Types.ObjectId,
         required: true },

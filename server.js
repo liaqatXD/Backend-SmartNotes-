@@ -2,7 +2,6 @@ require("dotenv/config");
 const express=require("express");
 const app=express();
 const port=process.env.PORT || 3000;
-
 //importing connectDB
 const connectDB=require("./config/connectdb");
 connectDB(process.env.DB_URL);

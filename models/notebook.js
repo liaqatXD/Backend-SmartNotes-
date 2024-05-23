@@ -9,7 +9,8 @@ const notebookSchema=new mongoose.Schema(
        },
        description:{
         type:String,
-        trim:true
+        trim:true,
+        default:""
        },
        author: { type: mongoose.Schema.Types.ObjectId,
          required: true },
